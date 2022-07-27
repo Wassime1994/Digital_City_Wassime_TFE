@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<Digital_City_Wassime_TFE.Models.Patient>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+
+<h2>Recherche Patients</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:40%;">Nom</th>
+    <th style="width:60%;">Prenom</th>
+    <th style="width:60%;">Problème</th>
+    <th style="width:60%;">Niveau Urgence</th>
+    <th style="width:60%;">Date Inscription</th>
+    <th style="width:60%;">Statut</th>
+    <th style="width:60%;">Operation</th>
+
+
+  </tr>
+
+@if (Model != null)
+{
+   @foreach (var item in Model)
+   {
+          <tr>
+            <td>@item.lastName</td>
+            <td>@item.firstName</td>
+            <td>@item.problem</td>
+            @if (item.level <= 5)
+            {
+                <td >@item.level  <span class="text-success"> / 10</span></td>           
+            }
+             @if (item.level > 5 & item.level<7)
+            {
+                <td >@item.level  <span class="text-warning"> / 10</span></td>           
+            }
+             @if (item.level > 7 & item.level <= 10)
+            {
+                <td >@item.level  <span class="text-danger"> / 10</span></td>           
+            }
+            <td>@item.date_entry</td>
+            <td>@item.statut</td>
+            <td> <a class="btn btn-warning" asp-route-id=@item.id asp-action="Update" asp-controller="Home"> Update </a></td>
+
+                @if(item.statut=="Finis")
+                {
+                <td> 
+                     <a asp-controller="Home" asp-action="Remove" asp-route-id=@item.id class="btn btn-danger p-2"> Fin de l'intervention </a>
+                </td>                    
+                }
+
+
+          </tr>
+       
+   } 
+}
+
+
+</table>
+
+

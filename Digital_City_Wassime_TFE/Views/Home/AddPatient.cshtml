@@ -1,0 +1,85 @@
+﻿
+<script src="~/js/formulaire.js"></script>
+<link rel="stylesheet" href="~/css/formulaire.css" asp-append-version="true" />
+
+@model Digital_City_Wassime_TFE.Models.PatientForm
+
+
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register Today</h3>
+                    <p>Fill in the data below.</p>
+                    <form class="requires-validation" novalidate method="post">
+
+                        <div class="col-md-12">
+                            <input asp-for="lastName" class="form-control" type="text" placeholder=" Nom" required>
+                            <div class="valid-feedback">Username field is valid!</div>
+                            <div class="invalid-feedback">Username field cannot be blank!</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input asp-for="firstName" class="form-control" type="text" placeholder=" Prénom" required>
+                            <div class="valid-feedback">FirstName field is valid!</div>
+                            <div class="invalid-feedback">FirstName field cannot be blank!</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <select asp-for=level class="form-select mt-3" required>
+                                <option selected disabled value="">Douleur</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+
+                            </select>
+                            <div class="valid-feedback">You selected a position!</div>
+                            <div class="invalid-feedback">Please select a position!</div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <input asp-for="problem" maxlength="20" class="form-control" type="text" placeholder="Entrez brièvement l'urgence'" required>
+                            <div class="valid-feedback">Probleme field is valid!</div>
+                            <div class="invalid-feedback">Probleme field cannot be blank!</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <select asp-for=statut class="form-select mt-3" required>
+                                <option selected value="En attente">Entre en Urgence</option>
+                            </select>
+                            <div class="valid-feedback">You selected a position!</div>
+                            <div class="invalid-feedback">Please select a position!</div>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label">I confirm that all data are correct</label>
+                            <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+
+                            <div class="form-button mt-3">
+                                <button id="submit" type="submit" class="btn btn-primary">Finaliser</button>
+                            </div>
+                            <div class="form-button mt-3">
+                                <a asp-action="Index" asp-controller="Home" class="btn btn-danger">Annuler</a>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
